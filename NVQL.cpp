@@ -4,15 +4,6 @@ NVQL::NVQL()
 	rankPosition = 0;
 	Reward = 0;
 }
-NVQL::NVQL(double rankposition)
-{
-	rankPosition = rankposition;
-}
-NVQL::NVQL(char name[31], int yeartowork, double salary, double rankposition, double reward) :Employee(name, salary, yeartowork)
-{
-	this->rankPosition = rankposition;
-	this->Reward = reward;
-}
 NVQL::NVQL(const NVQL& nvql) : Employee(nvql)
 {
 	this->rankPosition = nvql.rankPosition;

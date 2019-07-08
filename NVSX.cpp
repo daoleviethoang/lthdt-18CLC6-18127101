@@ -3,15 +3,7 @@ NVSX::NVSX()
 {
 	numberProduct = 0;
 }
-NVSX::NVSX(int numberproduct)
-{
-	numberProduct = numberproduct;
-}
-NVSX::NVSX(char name[31], int yeartowork, double salary, int numbertoproduct) :Employee(name, yeartowork, salary)
-{
-	this->numberProduct = numbertoproduct;
-}
-NVSX::NVSX(const NVSX& nvsx):Employee(nvsx)
+NVSX::NVSX(const NVSX& nvsx) : Employee(nvsx)
 {
 	this->numberProduct = nvsx.numberProduct;
 }

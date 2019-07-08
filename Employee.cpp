@@ -2,32 +2,14 @@
 #include"Employee.h"
 Employee::Employee()
 {
-	char a[31] = "Khong biet";
-	strcpy(Name, a);
+	string a = "Khong biet";
+	Name = a;
 	YearOfWork = 2011;
 	Salary = 800000;
-}
-Employee::Employee(char name[31])
-{
-	strcpy(Name, name);
-	YearOfWork = 2011;
-	Salary = 800000;
-}
-Employee::Employee(char name[31], double salary)
-{
-	strcpy(Name, name);
-	YearOfWork = 2011;
-	Salary = salary;
-}
-Employee::Employee(char name[31], double salary, int yearofwork)
-{
-	strcpy(Name, name);
-	YearOfWork = yearofwork;
-	Salary = salary;
 }
 Employee::Employee(const Employee &emp)
 {
-	strcpy(Name, emp.Name);
+	Name = emp.Name;
 	YearOfWork = emp.YearOfWork;
 	Salary = emp.Salary;
 }
@@ -39,7 +21,7 @@ void Employee::input()
 {
 	cout << "Enter Name: ";
 	cin.ignore();
-	cin.getline(Name, 31);
+	getline(cin, Name);
 	do
 	{
 		cout << "Enter Year to Work: ";

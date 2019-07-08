@@ -4,16 +4,6 @@ NVVP::NVVP()
 	NumberOfWork = 0;
 	Subsidize = 0;
 }
-NVVP::NVVP(int numberofwork, double subsidize)
-{
-	NumberOfWork = numberofwork;
-	Subsidize = subsidize;
-}
-NVVP::NVVP(char name[31], int yearofWork, double salary, int numberofwork, double subsidize) :Employee(name, yearofWork, salary)
-{
-	this->NumberOfWork = numberofwork;
-	this->Subsidize = subsidize;
-}
 NVVP::NVVP(const NVVP &nvvp) : Employee(nvvp)
 {
 	this->NumberOfWork = nvvp.NumberOfWork;

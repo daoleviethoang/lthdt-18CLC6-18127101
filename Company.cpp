@@ -51,28 +51,56 @@ int Company::Max(int a, int b, int c)
 	if (c > a && c > b) max = c;
 	return max;
 }
-void Company::seachEmployee()
+long double Company::Max4(long double a, long double b, long double c)
 {
-	string employee;
-	cout << "Enter Full Name You want to seach: ";
-	cin >> employee;
+	int max = 0;
+	if (a > b && a > c) max = a;
+	if (b > a && b > c) max = b;
+	if (c > a && c > b) max = c;
+	return max;
+}
+long double Company::Max2(long double &max, long double a)
+{
+	if (a > max)
+	{
+		max = a;
+	}
+	return max;
+}
+void Company::seachMaxSalary()
+{
+	long double max = 0;
+	long double max1 = 0, max2 = 0, max3 = 0, max4 = 0;
+	for (int i = 0; i < listNVQL.size(); i++)
+	{
+		max1 = Max2(max, listNVQL[i].Payroll());
+	}
+	for (int i = 0; i < listNVSX.size(); i++)
+	{
+		max2 = Max2(max, listNVSX[i].Payroll());
+	}
+	for (int i = 0; i < listNVVP.size(); i++)
+	{
+		max3 = Max2(max, listNVVP[i].Payroll());
+	}
+	max4 = Max4(max1, max2, max3);
 	for (int i = 0; i < Max(listNVQL.size(), listNVSX.size(), listNVVP.size()); i++)
 	{
-		if (employee == listNVQL[i].getname())
+		if (max4 == listNVQL[i].Payroll())
 		{
 			cout << "Found employee Successfull" << endl;
 			cout << "Information of Employee" << endl;
 			listNVQL[i].output();
 			break;
 		}
-		else if (employee == listNVSX[i].getname())
+		else if (max4 == listNVSX[i].Payroll())
 		{
 			cout << "Found employee Successfull" << endl;
 			cout << "Information of Employee" << endl;
 			listNVSX[i].output();
 			break;
 		}
-		else if (employee == listNVVP[i].getname())
+		else if (max4 == listNVVP[i].Payroll())
 		{
 			cout << "Found employee Successfull" << endl;
 			cout << "Information of Employee" << endl;
@@ -80,6 +108,14 @@ void Company::seachEmployee()
 			break;
 		}
 	}
+}
+int Company::numberNVSX()
+{
+	return listNVSX.size();
+}
+int Company::numberNVQL()
+{
+	return listNVQL.size();
 }
 Company::~Company()
 {}

@@ -16,10 +16,14 @@ class Company
 	int numNVQL;
 public:
 	Company();
-	virtual void input();
-	virtual void output();
+	void input();
+	void output();
 	long double SumPayroll();
-	void seachEmployee();
+	void seachMaxSalary();
 	int Max(int a, int b, int c);
+	long double Max2(long double &a, long double b);
+	long double Max4(long double a, long double b, long double c);
+	int numberNVSX();
+	int numberNVQL();
 	~Company();
 };
