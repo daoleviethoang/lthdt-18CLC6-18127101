@@ -1,23 +1,22 @@
-#ifndef sc
-#define sc
-
-#include<conio.h>
-#include<iostream>
-#include<stdio.h>
-#include<string>
-#include<vector>
-using namespace std;
+#pragma once
+#include "HomeroomTeacher.h"
 class School
 {
 private:
-	string Name, Address, PhoneNo, DateFounding;
+	vector<Teacher *> TC;
+	int numTeacher;
+	int numHomeTeacher;
 public:
 	School();
-	School(string Name);
-	School(string Name, string Address);
-	School(string Name, string Address, string PhoneNo);
-	School(string Name, string Address, string PhoneNo, string DateFounding);
-	void print();
-	~School();
+	void input();
+	void output();
+	long double SumSalary();
+	long double SeachMaxSalary();
+	int NotHomeTeacher();
+	int HomeTeacher();
+	long double AverageSalary();
+	void ListedTeacher();
+	void SeachID();
+	void SeachName();
+	int NumTeacherAbsent();
 };
-#endif

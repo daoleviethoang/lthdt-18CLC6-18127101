@@ -2,16 +2,24 @@
 #include"Employee.h"
 Employee::Employee()
 {
-	string a = "Khong biet";
-	Name = a;
+	ID = "";
+	Name = "Khong biet";
 	YearOfWork = 2011;
 	Salary = 800000;
+	day = 0;
+	month = 0;
+	year = 0;
 }
 Employee::Employee(const Employee &emp)
 {
 	Name = emp.Name;
 	YearOfWork = emp.YearOfWork;
 	Salary = emp.Salary;
+	ID = emp.ID;
+}
+string Employee::getID()
+{
+	return ID;
 }
 string Employee::getname()
 {
@@ -19,9 +27,17 @@ string Employee::getname()
 }
 void Employee::input()
 {
+	cout << "Enter ID: ";
+	getline(cin, ID);
 	cout << "Enter Name: ";
-	cin.ignore();
 	getline(cin, Name);
+	cout << "Birth day" << endl;
+	cout << "  Day: ";
+	cin >> day;
+	cout << "  Month: ";
+	cin >> month;
+	cout << "  Year: ";
+	cin >> year;
 	do
 	{
 		cout << "Enter Year to Work: ";
@@ -35,11 +51,17 @@ void Employee::input()
 }
 void Employee::output()
 {
-	cout << "Name: " << Name << endl;
+	cout << "ID: " << ID.c_str() << endl;
+	cout << "Name: " << Name.c_str() << endl;
+	cout << "Birthday: " << day << "/" << month << "/" << year << endl;
 	cout << "Year to Work: " << YearOfWork << endl;
 	cout << "Salary: " << Salary << endl;
 }
-double Employee::Payroll()
+long double Employee::Payroll()
 {
 	return Salary;
+}
+int Employee::getMonth()
+{
+	return month;
 }

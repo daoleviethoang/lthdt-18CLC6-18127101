@@ -5,25 +5,22 @@
 
 class Company
 {
-	NVQL nvql;
-	NVSX nvsx;
-	NVVP nvvp;
-	vector<NVVP> listNVVP;
+	vector<Employee *> epl;
 	int numNVVP;
-	vector<NVSX> listNVSX;
 	int numNVSX;
-	vector<NVQL> listNVQL;
 	int numNVQL;
 public:
 	Company();
 	void input();
 	void output();
 	long double SumPayroll();
-	void seachMaxSalary();
-	int Max(int a, int b, int c);
-	long double Max2(long double &a, long double b);
-	long double Max4(long double a, long double b, long double c);
+	long double seachMaxSalary();
 	int numberNVSX();
 	int numberNVQL();
+	long double AverageSalary();
+	void ListedEpl();
+	void seachEplID();
+	void seachName();
+	int seachBirthday();
 	~Company();
 };

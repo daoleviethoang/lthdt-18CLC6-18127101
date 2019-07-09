@@ -9,8 +9,7 @@ public:
 	NVSX();
 	NVSX(const NVSX& nvsx);
 	NVSX& operator=(const NVSX& nvsx);
-	string getname();
 	void input();
 	void output();
-	double Payroll();
+	long double Payroll();
 };

@@ -1,121 +1,156 @@
 #include "company.h"
 Company::Company()
 {
-	numNVVP = 0;
-	numNVSX = 0;
-	numNVQL = 0;
+	int numNVVP = 0;
+	int numNVSX = 0;
+	int numNVQL = 0;
 }
 void Company::input()
 {
-	cout << "Enter amount NVVP: ";
-	cin >> numNVVP;
-	for (int i = 0; i < numNVVP; i++)
+	int slt = 0;
+	cout << "1: Create NVVP" << endl;
+	cout << "2: Create NVSX" << endl;
+	cout << "3: Create NVQL" << endl;
+	cout << "4: End" << endl;
+	do
 	{
-		listNVVP.push_back(nvvp);
-		listNVVP[i].input();
-	}
-	cout << "Enter amount NVSX: ";
-	cin >> numNVSX;
-	for (int i = 0; i < numNVSX; i++)
-	{
-		listNVSX.push_back(nvsx);
-		listNVSX[i].input();
-	}
-	cout << "Enter amount NVQL: ";
-	cin >> numNVQL;
-	for (int i = 0; i < numNVQL; i++)
-	{
-		listNVQL.push_back(nvql);
-		listNVQL[i].input();
-	}
+		cout << "Sellect of You: ";
+		cin >> slt;
+		cin.get();
+		if(slt == 1)
+		{
+			Employee *temp = new NVVP;
+			temp->input();
+			epl.push_back(temp);
+			numNVVP++;
+		}
+		else if(slt == 2)
+		{
+			Employee *temp = new NVSX;
+			temp->input();
+			epl.push_back(temp);
+			numNVSX++;
+		}
+		else if(slt == 3)
+		{
+			Employee *temp = new NVQL;
+			temp->input();
+			epl.push_back(temp);
+			numNVQL++;
+		}
+		else
+		{
+			cout << "Finish initializing" << endl;
+			break;
+		}
+	} while (slt < 3 || slt >= 0 && cout << "\nContinue to initialize" << endl);
 }
 void Company::output()
 {
-	int i = 0;
-	cout << "List NVVP: " << endl;
-	for (int i = 0; i < listNVVP.size(); i++)
+	cout << "List Employee: " << endl;
+	for (int i = 0; i < epl.size(); i++)
 	{
-		cout << "Information NVVP " << i << "" << endl;
-		listNVVP[i].output();
+		cout << "Information Employee "<< endl;
+		epl[i]->output();
 	}
 }
 long double Company::SumPayroll()
 {
-	return nvvp.Payroll() + nvsx.Payroll() + nvql.Payroll();
-}
-int Company::Max(int a, int b, int c)
-{
-	int max = 0;
-	if (a > b && a > c) max = a;
-	if (b > a && b > c) max = b;
-	if (c > a && c > b) max = c;
-	return max;
-}
-long double Company::Max4(long double a, long double b, long double c)
-{
-	int max = 0;
-	if (a > b && a > c) max = a;
-	if (b > a && b > c) max = b;
-	if (c > a && c > b) max = c;
-	return max;
-}
-long double Company::Max2(long double &max, long double a)
-{
-	if (a > max)
+	long double Sum = 0;
+	for (int i = 0; i < epl.size(); i++)
 	{
-		max = a;
+		Sum += epl[i]->Payroll();
 	}
-	return max;
+	return Sum;
 }
-void Company::seachMaxSalary()
+long double Company::seachMaxSalary()
 {
-	long double max = 0;
-	long double max1 = 0, max2 = 0, max3 = 0, max4 = 0;
-	for (int i = 0; i < listNVQL.size(); i++)
+	long double Max = 0;
+	for (int i = 0; i < epl.size(); i++)
 	{
-		max1 = Max2(max, listNVQL[i].Payroll());
-	}
-	for (int i = 0; i < listNVSX.size(); i++)
-	{
-		max2 = Max2(max, listNVSX[i].Payroll());
-	}
-	for (int i = 0; i < listNVVP.size(); i++)
-	{
-		max3 = Max2(max, listNVVP[i].Payroll());
-	}
-	max4 = Max4(max1, max2, max3);
-	for (int i = 0; i < Max(listNVQL.size(), listNVSX.size(), listNVVP.size()); i++)
-	{
-		if (max4 == listNVQL[i].Payroll())
+		if (epl[i]->Payroll() > Max)
 		{
-			cout << "Found employee Successfull" << endl;
-			cout << "Information of Employee" << endl;
-			listNVQL[i].output();
-			break;
-		}
-		else if (max4 == listNVSX[i].Payroll())
-		{
-			cout << "Found employee Successfull" << endl;
-			cout << "Information of Employee" << endl;
-			listNVSX[i].output();
-			break;
-		}
-		else if (max4 == listNVVP[i].Payroll())
-		{
-			cout << "Found employee Successfull" << endl;
-			cout << "Information of Employee" << endl;
-			listNVVP[i].output();
-			break;
+			Max = epl[i]->Payroll();
 		}
 	}
+	return Max;
 }
 int Company::numberNVSX()
 {
-	return listNVSX.size();
+	return numNVSX;
 }
 int Company::numberNVQL()
 {
-	return listNVQL.size();
+	return numNVQL;
+}
+long double Company::AverageSalary()
+{
+	if (numNVQL == 0 && numNVSX == 0 && numNVVP == 0)
+	{
+		cout << "No staff has been created yet" << endl;
+
+	}
+	else
+	{
+		return (SumPayroll() / (numNVVP + numNVSX + numNVQL));
+	}
+}
+void Company::ListedEpl()
+{
+	int check = 0;
+	for (int i = 0; i < epl.size(); i++)
+	{
+		if (epl[i]->Payroll() < 3000000)
+		{
+			epl[i]->output();
+			check = 1;
+		}
+	}
+	if (check == 0) cout << "Not found 404" << endl;
+}
+void Company::seachEplID()
+{
+	string ID;
+	int check = 0;
+	cout << "Enter the ID you want to find: ";
+	getline(cin, ID);
+	for (int i = 0; i < epl.size(); i++)
+	{
+		if (ID == epl[i]->getID())
+		{
+			epl[i]->output();
+			check = 1;
+		}
+	}
+	if (check == 0) cout << "Not found 404" << endl;
+}
+void Company::seachName()
+{
+	string name;
+	int check = 0;
+	cout << "Enter the Name you want to find: ";
+	getline(cin, name);
+	for (int i = 0; i < epl.size(); i++)
+	{
+		if (epl[i]->getname() == name)
+		{
+			check = 1;
+			epl[i]->output();
+		}
+	}
+	if (check == 0) cout << "Not found 404" << endl;
+}
+int Company::seachBirthday()
+{
+	int index = 0;
+	for (int i = 0; i < epl.size(); i++)
+	{
+		if (epl[i]->getMonth() == 5)
+		{
+			index++;
+		}
+	}
+	return index;
 }
 Company::~Company()
 {}

@@ -17,10 +17,6 @@ NVSX &NVSX::operator=(const NVSX& nvsx)
 	this->numberProduct = nvsx.numberProduct;
 	return *this;
 }
-string NVSX::getname()
-{
-	return Employee::getname();
-}
 void NVSX::input()
 {
 	Employee::input();
@@ -29,10 +25,11 @@ void NVSX::input()
 }
 void NVSX::output()
 {
+	cout << "\nNVSX" << endl;
 	Employee::output();
 	cout << "The number of Products: " << numberProduct << endl;
 }
-double NVSX::Payroll()
+long double NVSX::Payroll()
 {
 	return Employee::Payroll() + numberProduct * 2;
 }

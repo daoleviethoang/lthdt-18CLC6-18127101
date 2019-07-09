@@ -20,10 +20,6 @@ NVVP& NVVP::operator=(const NVVP &nvvp)
 	this->Subsidize = nvvp.Subsidize;
 	return *this;
 }
-string NVVP::getname()
-{
-	return Employee::getname();
-}
 void NVVP::input()
 {
 	Employee::input();
@@ -40,11 +36,12 @@ void NVVP::input()
 }
 void NVVP::output()
 {
+	cout << "\nNVVP" << endl;
 	Employee::output();
 	cout << "Number of working days: " << NumberOfWork << endl;
 	cout << "Subsidize: " << Subsidize << endl;
 }
-double NVVP::Payroll()
+long double NVVP::Payroll()
 {
 	return Employee::Payroll() + NumberOfWork * 100000 + Subsidize;
 }

@@ -7,14 +7,18 @@ using namespace std;
 class Employee
 {
 private:
+	string ID;
 	string Name;
+	int day, month, year;
 	int YearOfWork;
-	double Salary;
+	long double Salary;
 public:
 	Employee();
 	Employee(const Employee &emp);
 	string getname();
+	string getID();
+	int getMonth();
 	virtual void input();
 	virtual void output();
-	virtual double Payroll();
+	virtual long double Payroll() = 0;
 };

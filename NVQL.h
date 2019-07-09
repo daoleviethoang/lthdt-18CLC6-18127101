@@ -9,8 +9,7 @@ public:
 	NVQL();
 	NVQL(const NVQL& nvql);
 	NVQL& operator=(NVQL& nvql);
-	string getname();
 	void input();
 	void output();
-	double Payroll();
+	long double Payroll();
 };

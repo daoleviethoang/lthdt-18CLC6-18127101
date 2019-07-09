@@ -20,10 +20,6 @@ NVQL& NVQL::operator=(NVQL& nvql)
 	this->Reward = nvql.Reward;
 	return *this;
 }
-string NVQL::getname()
-{
-	return Employee::getname();
-}
 void NVQL::input()
 {
 	Employee::input();
@@ -40,11 +36,12 @@ void NVQL::input()
 }
 void NVQL::output()
 {
+	cout << "\nNVQL" << endl;
 	Employee::output();
 	cout << "Rank of Position: " << rankPosition << endl;
 	cout << "Reward: " << Reward << endl;
 }
-double NVQL::Payroll()
+long double NVQL::Payroll()
 {
 	return Employee::Payroll()*rankPosition + Reward;
 }
