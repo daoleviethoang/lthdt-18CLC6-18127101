@@ -1,22 +1,18 @@
-#include "Motorbike.h"
-#include "TRuck.h"
-void main()
-{
-	int a;
-	int b;
-	cout << "1: MotorBike" << endl;
-	cout << "2: Truck" << endl;
-	cout << "Select: ";
-	cin >> b;
-	if (b == 1)
-	{
-		Motorbike mtb;
-		mtb.menu();
+#include "01.h"
+int main() {
+	int x = 20;
+	int y = 0;
+	int z;
+	try {
+		if (y == 0)
+			throw DividedByZeroException();
+		z = x / y;
+		cout << z << endl;
 	}
-	else if(b == 2)
-	{
-		Truck T;
-		T.menu();
+	catch (DividedByZeroException &DZE) {
+		cout << DZE.what() << endl << endl;
 	}
+	cout << "End DividedByZeroException" << endl;
 	_getch();
+	return 0;
 }

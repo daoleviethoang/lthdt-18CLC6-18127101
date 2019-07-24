@@ -1,16 +1,20 @@
-#include "company.h"
+#include "05.h"
 void main()
 {
-	Company cp;
-	cout << "_Create Employees_" << endl;
-	cp.input();
-	system("cls");
-	cout << "_Information Employee_" << endl;
-	cp.output();
-	cout << "Sum Salary of Company: " << cp.SumPayroll() << fixed << endl;
-	cp.seachMaxSalary();
-	cout << "Number of management personnel: " << cp.numberNVSX() << fixed << endl;
-	cout << "Number of production staff: " << cp.numberNVQL() << fixed<< endl;
+	IntegerFormatException IFE("123");
+	try
+	{
+		if (IFE.CheckConvertedThisType() == true)
+		{
+			throw IntegerFormatException("123");
+		}
+		cout << "The string after conversion is: " << IFE.CheckConvertedInteger() << endl;
+	}
+	catch (IntegerFormatException &Interger)
+	{
+
+		cout << Interger.what() << endl;
+	}
+	cout << "End Game" << endl;
 	_getch();
-	return;
 }
